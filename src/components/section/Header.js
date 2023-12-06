@@ -1,6 +1,6 @@
 // React and Router
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // CSS
 import "../../styles/section/Header.css";
 // MUI icons
@@ -16,9 +16,20 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 
 function Header({ searchInput, setSearchInput }) {
+  let navigate = useNavigate();
+
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
+
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter' && searchInput.trim() !== '') {
+        
+        navigate(`/search/${searchInput}`);
+    }
+};
+
+  
   return (
     <div className="header">
       <div className="header__left">
@@ -37,6 +48,7 @@ function Header({ searchInput, setSearchInput }) {
         <div className="header__center__search-bar">
           <input
             onChange={handleInputChange}
+            onKeyDown={handleEnterPress}
             value={searchInput}
             placeholder="Search"
             type="text"
