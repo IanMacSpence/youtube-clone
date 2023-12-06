@@ -3,7 +3,7 @@
   position: sticky;
   top: 50px;
   overflow-y: auto;
-  height: calc(100vh - 50px); /* Adjust this value based on your needs */
+  height: calc(100vh - 50px); /* calculates the top of the sidebar */
 }
 
 .sidebar__section {
